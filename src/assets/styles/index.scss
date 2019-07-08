@@ -1,3 +1,12 @@
+@import '../../components/App/App';
+@import '../../components/ColorTile/ColorTile';
+@import '../../components/ErrorPage/ErrorPage';
+@import '../../components/Form/Form';
+@import '../../components/Palette/Palette';
+@import '../../components/Picker/Picker';
+@import '../../components/Project/Project';
+@import '../../components/Projects/Projects';
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -7,7 +16,3 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
