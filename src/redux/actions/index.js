@@ -1,6 +1,6 @@
-export const isLoading = (boolean) => ({
+export const isLoading = (loading) => ({
   type: "IS_LOADING",
-  loading: boolean
+  loading
 });
 
 export const hasErrored = (message) => ({
@@ -18,6 +18,7 @@ export const createProject = (project) => ({
   project
 });
 
-export const isLocked = (boolean) => ({
-  type: "IS_LOCKED"
+export const isLocked = (locked) => ({
+  type: "IS_LOCKED",
+  locked
 });
