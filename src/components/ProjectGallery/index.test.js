@@ -1,13 +1,13 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
 import { shallow } from 'enzyme';
-import Unicorn from '.';
+import ProjectGallery from '.';
 
-describe('Unicorn', () => {
+describe('ProjectGallery', () => {
   let wrapper;
 
   it('should match the snapshot', () => {
-    wrapper = shallow(<Unicorn />);
+    wrapper = shallow(<ProjectGallery />);
 
     expect(wrapper).toMatchSnapshot();
   });
