@@ -1,11 +1,16 @@
-import React from 'react'
+import React from 'react';
+import Unicorn from '../Picker';
 
-const App = () => {
-  return (
-    <div>
-      <h1>Palette Picker</h1>
-    </div>
-  )
-}
+
+
+const App = () => (
+  
+
+  <main className="app">
+    <h1>Palette Picker</h1>
+    <Unicorn />
+   
+  </main>
+);
 
 export default App;
