@@ -1,6 +1,7 @@
 /* eslint-disable import/no-named-as-default */
 import React from 'react';
 import Unicorn from '../Unicorn';
+import Gallery from '../ProjectGallery';
 
 
 
@@ -25,6 +26,7 @@ const App = () => (
     </section>
     <section className="gallery-section">
       GALLERY
+      <Gallery />
     </section>
    
   </main>
