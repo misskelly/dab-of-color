@@ -1,10 +1,13 @@
 import React from 'react';
-import Rainbow from '../Rainbow';
+import Project from '../Project';
 
 const Gallery = () => {
+  // set up for redux
+  // map through projects, return a project component
+
   return (
     <div>
-      <Rainbow />
+      <Project />
     </div>
   )
 }

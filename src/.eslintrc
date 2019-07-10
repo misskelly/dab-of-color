@@ -7,5 +7,6 @@
       "extensions": [".js", ".jsx"]
     }],
     "react/forbid-prop-types": "disabled",
+    "comma-dangle": ["error", "never"],
   }
 }
