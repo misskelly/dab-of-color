@@ -6,3 +6,12 @@ export const loadingReducer = (state = false, action) => {
       return state;
   }
 }
+
+export const currentColorsReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'GET_CURRENT_COLORS':
+      return action.colors;
+    default:
+      return state;
+  }
+}

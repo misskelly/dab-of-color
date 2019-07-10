@@ -22,3 +22,8 @@ export const isLocked = (locked) => ({
   type: "IS_LOCKED",
   locked
 });
+
+export const getCurrentColors = (colors) =>  ({
+  type: 'GET_CURRENT_COLORS',
+  colors
+});
