@@ -30,7 +30,7 @@ export class App extends Component {
       <header className="header">
       <h1>Palette Picker</h1>
       </header>
-      <Unicorn />
+      <Unicorn size="big"/>
       <section className="palettes-big">
         PALETTES
       </section>
