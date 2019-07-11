@@ -27,7 +27,7 @@ export const currentProjectReducer = (state = {}, action) => {
 
 export const allProjectsReducer = (state = [], action) => {
   switch (action.type) {
-    case 'GET_ALL_PROJECT':
+    case 'GET_ALL_PROJECTS':
       return action.projects;
     default:
       return state;

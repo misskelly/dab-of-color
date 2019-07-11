@@ -21,6 +21,7 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "thunk": "0.0.1",
     "uniqid": "^5.0.3"
   },
   "scripts": {
