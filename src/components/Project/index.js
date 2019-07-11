@@ -1,49 +1,34 @@
 import React, { Component } from 'react';
-import randomColor from 'randomcolor';
 import uniqid from 'uniqid'
-import LittleUni from '../Unicorn';
-import Rainbow from '../Rainbow';
-import getAll from '../../utils/apiCalls/getAll';
 
 
 
 export default class Project extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      palettes: [{
-        color1: '#F655AA',
-        color2: '#FBA904',
-        color3: '#7AFDDF',
-        color4: '#571E7F',
-        color5: '#0071BD'
-      }]
-    };
   }
-
-  componentDidMount = () => {
-    getAll('https://unicolors.herokuapp.com/api/v1/palettes')
-      .then(res => console.log(res))
-    const color = randomColor();
-    console.log(this.state);
-    console.log(color);
-  };
 
   key = () => {
     return uniqid();
   }
 
   render() {
-    const { colors, palettes } = this.state;
-    const rainbows = palettes.map(palette => (
-      <Rainbow colors={palette} key={this.key}/>
-    ))
-    return (
+    const displayProject = this.props.project.palettes.map(palette => {
+      return (
+      <ul>
+        <li style={{backgroundColor: palette.color_1}}>{palette.color_1}</li>
+        <li style={{backgroundColor: palette.color_2}}>{palette.color_2}</li>
+        <li style={{backgroundColor: palette.color_3}}>{palette.color_3}</li>
+        <li style={{backgroundColor: palette.color_4}}>{palette.color_4}</li>
+        <li style={{backgroundColor: palette.color_5}}>{palette.color_5}</li>
+      </ul>
+      )
+    })
+    return(
       <div>
-        <LittleUni colors={colors} />
-        { rainbows }
+        <h3>{this.props.project.name}</h3>
+        {displayProject}
       </div>
-    );
+    )
   }
 }

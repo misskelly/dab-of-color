@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Project from '../Project';
+import { connect } from 'react-redux'
 
-const Gallery = () => {
-  // set up for redux
-  // map through projects, return a project component
 
-  return (
-    <div>
-      <Project />
-    </div>
-  )
+export class ProjectGallery extends Component {
+  render() {
+    const displayProjects = this.props.allProjects.map(project => <Project project={project}/>)
+    return (
+      <div>
+        {displayProjects}
+      </div>
+    )
+  }
 }
 
-export default Gallery;
+export const mapStateToProps = (state) => ({
+  allProjects : state.allProjects
+});
+
+export default connect(mapStateToProps)(ProjectGallery)
