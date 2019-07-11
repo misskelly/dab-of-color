@@ -10,33 +10,27 @@
     "form form form form"
     "gallery gallery gallery gallery"
 }
-.unicorn-wrapper {
-  background: pink;
+.unicorn-proj {
   grid-area: unicorn;
 }
 
 .header {
-  background: lightblue;
   grid-area: header;
 }
 
 .palettes-big {
-  background: teal;
   grid-area: palettes;
 }
 
 .new-palette-section {
-  background: limegreen;
   grid-area: new;
 }
 
 .new-project-form {
-  background: magenta;
   grid-area: form;
 }
 
 .gallery-section {
-  background: yellow;
   grid-area: gallery;
   height: 500px;
 

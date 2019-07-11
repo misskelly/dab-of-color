@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import randomColor from 'randomcolor';
 import Unicorn from '../../components/Unicorn';
 import Gallery from '../../components/ProjectGallery';
 import * as actions from '../../redux/actions';
-import randomColor from 'randomcolor';
 import TileContainer from '../TileContainer';
 import getProjects from '../../utilities/thunks/getProjects';
 
@@ -25,32 +25,33 @@ export class App extends Component {
 
   render() {
     const { currentColors } = this.props;
-    console.log('app: currentColors', currentColors);
     return (
       <main className="app">
         <header className="header">
           <h1>Palette Picker</h1>
         </header>
         { currentColors.length
-        && <Unicorn
+        && (
+        <Unicorn
           size="big"
           colors={currentColors}
         />
+)
       }
         <section className="palettes-big">
         PALETTES
         </section>
         <section className="new-palette-section">
-        COLOR GENERATOR
           <TileContainer />
-          <h3 onClick={this.getRandomColors}>Generate Colors</h3>
+        <h3 onClick={this.getRandomColors}>
+          Generate Colors
+        </h3>
         </section>
         <section className="new-project-form">
           <input type="text" placeholder="name" />
           <button type="submit" className="save-project-btn">Save</button>
         </section>
         <section className="gallery-section">
-        GALLERY
           <Gallery />
         </section>
 

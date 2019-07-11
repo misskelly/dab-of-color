@@ -1,32 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import uniqid from 'uniqid';
 import Project from '../Project';
 
 
-export class Gallery extends Component {
-  render() {
-    const { allProjects } = this.props;
-    const projects = (unicorns) => {
-      const key = uniqid();
-      const lilUnis = unicorns.map(uni => (
+export const Gallery = (props) => {
+  const { allProjects } = props;
+  const key = uniqid();
+
+  return (
+    <section className="project-gallery">
+      { allProjects.length && allProjects.map(uni => (
         <Project
           key={key}
           name={uni.name}
           palettes={uni.palettes}
         />
-      ));
-      return lilUnis;
-    };
-    return (
-      <section className="project-gallery">
+      ))
+    }
 
-        { allProjects.length && projects(allProjects) }
-
-      </section>
-    );
-  }
-}
+    </section>
+  );
+};
 
 export const mapStateToProps = state => ({
   currentColors: state.currentColors,
