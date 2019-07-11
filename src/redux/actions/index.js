@@ -8,19 +8,14 @@ export const hasErrored = (message) => ({
   message
 });
 
-export const pushPalette = (palette) => ({
-  type: "PUSH_PALETTE",
-  palette
-});
-
-export const createProject = (project) => ({
-  type: "CREATE_PALETTE",
+export const getCurrentProject = (project) => ({
+  type: "GET_CURRENT_PROJECT",
   project
 });
 
-export const isLocked = (locked) => ({
-  type: "IS_LOCKED",
-  locked
+export const getAllProjects = (projects) => ({
+  type: "GET_ALL_PROJECTS",
+  projects
 });
 
 export const getCurrentColors = (colors) =>  ({

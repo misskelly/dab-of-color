@@ -4,20 +4,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions'
 import randomColor from 'randomcolor';
-import TileContainer from '../TileContainer'
+import TileContainer from '../TileContainer';
+import getProjects from '../../utilities/thunks/getProjects'
 
 export class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      colors: []
-    }
-  }
-  
 
-  // componentDidMount() {
-  //   this.getRandomColors()
-  // }
+  componentDidMount() {
+    const projUrl = 'https://unicolors.herokuapp.com/api/v1/projects';
+    const palUrl = 'https://unicolors.herokuapp.com/api/v1/palettes';
+    this.getRandomColors()
+    this.props.getProjects(projUrl, palUrl)
+  }
 
   getRandomColors = () => {
     let newCurrentColors = []
@@ -57,7 +54,8 @@ export class App extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  getCurrentColors: colors => dispatch(actions.getCurrentColors(colors))
+  getCurrentColors: colors => dispatch(actions.getCurrentColors(colors)),
+  getProjects: (projectUrl, paletteUrl) => dispatch(getProjects(projectUrl, paletteUrl))
 });
 
 export default connect(null, mapDispatchToProps)(App)

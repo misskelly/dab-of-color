@@ -15,3 +15,21 @@ export const currentColorsReducer = (state = [], action) => {
       return state;
   }
 }
+
+export const currentProjectReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'GET_CURRENT_PROJECT':
+      return action.project;
+    default:
+      return state;
+  }
+}
+
+export const allProjectsReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'GET_ALL_PROJECTS':
+      return action.projects;
+    default:
+      return state;
+  }
+}

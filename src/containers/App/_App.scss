@@ -41,3 +41,14 @@
   height: 500px;
 
 }
+
+.new-palette-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: auto;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
