@@ -6,7 +6,7 @@ export class TileContainer extends Component {
   render() {
     const displayTiles = this.props.currentColors.map( color => <Tile key={color} color={color}/>)
     return (
-      <div>
+      <div className='tile-container'>
         {displayTiles}
       </div>
     )

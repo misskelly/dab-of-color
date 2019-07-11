@@ -15,9 +15,9 @@ export class App extends Component {
   }
   
 
-  // componentDidMount() {
-  //   this.getRandomColors()
-  // }
+  componentDidMount() {
+    this.getRandomColors()
+  }
 
   getRandomColors = () => {
     let newCurrentColors = []
