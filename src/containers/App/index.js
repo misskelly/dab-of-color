@@ -13,11 +13,10 @@ export class App extends Component {
       colors: []
     }
   }
-  
 
-  // componentDidMount() {
-  //   this.getRandomColors()
-  // }
+  componentDidMount() {
+    this.getRandomColors()
+  }
 
   getRandomColors = () => {
     let newCurrentColors = []
@@ -33,7 +32,7 @@ export class App extends Component {
       <header className="header">
       <h1>Palette Picker</h1>
       </header>
-      <Unicorn />
+      <Unicorn size="big"/>
       <section className="palettes-big">
         PALETTES
       </section>
