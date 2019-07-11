@@ -1,5 +1,5 @@
-const postProject = async (url, body) => {
-  const response = await fetch(url, {
+const postProject = async (path, body) => {
+  const response = await fetch(`https://unicolors.herokuapp.com/api/v1/${path}`, {
     method: 'POST',
     body: JSON.stringify(body),
     headers: {
@@ -7,7 +7,7 @@ const postProject = async (url, body) => {
     }
   });
   if (!response.ok) {
-    throw new Error(`Failed to add project: ${response.statusText}`);
+    throw new Error(`Failed to post: ${response.statusText}`);
   }
   return response.json();
 };

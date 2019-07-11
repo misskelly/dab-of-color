@@ -4,9 +4,9 @@ describe('getAll', () => {
   const mockUrl = 'https://unicolors.com/api/v1/projects';
   const mockResult = [{ id: 1, name: 'Bob' }];
   window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-      ok: true,
-      json: () => Promise.resolve(mockResult)
-    }));
+    ok: true,
+    json: () => Promise.resolve(mockResult)
+  }));
 
   it('should fetch using correct url parameter', () => {
     getAll(mockUrl);
