@@ -11,15 +11,15 @@ export class Unicorn extends Component {
   }
 
   componentDidMount() {
-    const { currentColors, size, colors } = this.props;
-    const color = size === 'big' ? currentColors : colors;
-    this.setState({ colors: [color.color_1, color.color_2, color.color_3, color.color_4, color.color_5] });
-    console.log(this.state);
+    // const { currentColors, size, colors } = this.props;
+    console.log('unicorn props: ',this.props)
+    // const color = size === 'little' ? colors : currentColors;
+    // this.setState({ colors:  });
+    // console.log(this.state);
   }
 
   render() {
-    const { colors } = this.state;
-    const { currentColors, size } = this.props;
+    const { colors, size } = this.props;
 
     return (
       <div className={`unicorn-proj ${size}`}>

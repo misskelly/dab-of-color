@@ -1,61 +1,72 @@
-import Unicorn from '../../components/Unicorn';
-import Gallery from '../../components/ProjectGallery';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../redux/actions'
+import Unicorn from '../../components/Unicorn';
+import Gallery from '../../components/ProjectGallery';
+import * as actions from '../../redux/actions';
 import randomColor from 'randomcolor';
 import TileContainer from '../TileContainer';
-import getProjects from '../../utilities/thunks/getProjects'
+import getProjects from '../../utilities/thunks/getProjects';
 
 export class App extends Component {
-
   componentDidMount() {
     const projUrl = 'https://unicolors.herokuapp.com/api/v1/projects';
     const palUrl = 'https://unicolors.herokuapp.com/api/v1/palettes';
-    this.getRandomColors()
-    this.props.getProjects(projUrl, palUrl)
+    this.getRandomColors();
+    this.props.getProjects(projUrl, palUrl);
   }
 
   getRandomColors = () => {
-    let newCurrentColors = []
+    const newCurrentColors = [];
     for (let i = 0; i < 5; i++) {
-      newCurrentColors.push(randomColor())
+      newCurrentColors.push(randomColor());
     }
-    this.props.getCurrentColors(newCurrentColors)
+    this.props.getCurrentColors(newCurrentColors);
   }
 
   render() {
+    const { currentColors } = this.props;
+    console.log('app: currentColors', currentColors);
     return (
       <main className="app">
-      <header className="header">
-      <h1>Palette Picker</h1>
-      </header>
-      <Unicorn size="big"/>
-      <section className="palettes-big">
+        <header className="header">
+          <h1>Palette Picker</h1>
+        </header>
+        { currentColors.length
+        && <Unicorn
+          size="big"
+          colors={currentColors}
+        />
+      }
+        <section className="palettes-big">
         PALETTES
-      </section>
-      <section className="new-palette-section">
+        </section>
+        <section className="new-palette-section">
         COLOR GENERATOR
-        <TileContainer />
-        <h3 onClick={this.getRandomColors}>Generate Colors</h3>
-      </section>
-      <section className="new-project-form">
-        <input type="text" placeholder="name"/>
-        <button type="submit" className="save-project-btn">Save</button>
-      </section>
-      <section className="gallery-section">
+          <TileContainer />
+          <h3 onClick={this.getRandomColors}>Generate Colors</h3>
+        </section>
+        <section className="new-project-form">
+          <input type="text" placeholder="name" />
+          <button type="submit" className="save-project-btn">Save</button>
+        </section>
+        <section className="gallery-section">
         GALLERY
-        <Gallery />
-      </section>
-     
-    </main>
-  );
+          <Gallery />
+        </section>
+
+      </main>
+    );
   }
 }
 
-export const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = dispatch => ({
   getCurrentColors: colors => dispatch(actions.getCurrentColors(colors)),
   getProjects: (projectUrl, paletteUrl) => dispatch(getProjects(projectUrl, paletteUrl))
 });
 
-export default connect(null, mapDispatchToProps)(App)
+export const mapStateToProps = state => ({
+  currentColors: state.currentColors,
+  allProjects: state.allProjects
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
