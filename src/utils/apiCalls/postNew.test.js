@@ -1,7 +1,7 @@
 import postNew from './postNew';
 
 describe('postNew', () => {
-  const mockUrl = 'www.newUnicorn.com';
+  const mockPath = 'test';
   const mockBody = {
     name: 'Fred'
   };
@@ -15,7 +15,8 @@ describe('postNew', () => {
     }));
 
   it('should fetch using correct parameters', () => {
-    postNew(mockUrl, mockBody);
+    let mockUrl = `https://unicolors.herokuapp.com/api/v1/${mockPath}`
+    postNew(mockPath, mockBody);
     const expectedSecondArg = {
       method: 'POST',
       body: JSON.stringify(mockBody),
@@ -30,12 +31,13 @@ describe('postNew', () => {
     const expected = {
       id: 1
     };
-    const result = await postNew(mockUrl, mockBody);
+    const result = await postNew(mockPath, mockBody);
     expect(result).toEqual(expected);
   });
 
   it('should return an error if post fails', async () => {
-    const expected = Error('Failed to add project: I hate it when things do not work the way you want them to.');
+    let mockUrl = `https://unicolors.herokuapp.com/api/v1/${mockPath}`;
+    const expected = Error('Failed to post: I hate it when things do not work the way you want them to.');
 
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       statusText: 'I hate it when things do not work the way you want them to.',
