@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 export class Unicorn extends Component {
   render() {
 
-    const { currentColors } = this.props
+    const { currentColors } = this.props;
 
     return (
       <div className="unicorn-wrapper">
