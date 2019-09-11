@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import randomColor from 'randomcolor';
 import Unicorn from '../../components/Unicorn';
 import Gallery from '../../components/ProjectGallery';
 import * as actions from '../../redux/actions';
-import randomColor from 'randomcolor';
 import TileContainer from '../TileContainer';
-import getProjects from '../../utilities/thunks/getProjects';
+import getProjects from '../../utils/thunks/getProjects';
 
 export class App extends Component {
   constructor(props) {
-    super(props)
+    super(props);
   }
 
   componentDidMount() {
     const projUrl = 'https://unicolors.herokuapp.com/api/v1/projects';
     const palUrl = 'https://unicolors.herokuapp.com/api/v1/palettes';
     this.getRandomColors();
-    this.props.getProjects(projUrl, palUrl)
+    this.props.getProjects(projUrl, palUrl);
   }
 
   getRandomColors = () => {
@@ -25,7 +25,7 @@ export class App extends Component {
       newCurrentColors.push(randomColor());
     }
     this.props.getCurrentColors(newCurrentColors);
-  }
+  };
 
   render() {
     // const { allProjects, loading } = this.state;
@@ -35,35 +35,37 @@ export class App extends Component {
           <h1>Palette Picker</h1>
         </header>
         <Unicorn />
-        <section className="palettes-big">
-        PALETTES
-        </section>
+        <section className="palettes-big">PALETTES</section>
         <section className="new-palette-section">
-        COLOR GENERATOR
+          COLOR GENERATOR
           <TileContainer />
           <h3 onClick={this.getRandomColors}>Generate Colors</h3>
         </section>
         <section className="new-project-form">
           <input type="text" placeholder="name" />
-          <button type="submit" className="save-project-btn">Save</button>
+          <button type="submit" className="save-project-btn">
+            Save
+          </button>
         </section>
         <section className="gallery-section">
-           <Gallery />
+          <Gallery />
         </section>
-
       </main>
     );
   }
 }
 
-export const mapDispatchToProps = dispatch => ({
-  getCurrentColors: colors => dispatch(actions.getCurrentColors(colors)),
+export const mapDispatchToProps = (dispatch) => ({
+  getCurrentColors: (colors) => dispatch(actions.getCurrentColors(colors)),
   getProjects: (projectUrl, paletteUrl) => dispatch(getProjects(projectUrl, paletteUrl))
 });
 
-export const mapStateToProps = state => ({
+export const mapStateToProps = (state) => ({
   currentColors: state.currentColors,
   allProjects: state.allProjects
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
