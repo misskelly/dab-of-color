@@ -23,17 +23,19 @@ export default class Project extends Component {
   }
 
   componentDidMount = () => {
-    fetchAll('https://unicolors.herokuapp.com/api/v1/palettes').then((res) => console.log(res));
+    fetchAll('https://unicolors.herokuapp.com/api/v1/palettes').then(res =>
+      console.log(res)
+    );
     const color = randomColor();
-    console.log(this.state);
-    console.log(color);
   };
 
   key = () => uniqid();
 
   render() {
     const { colors, palettes } = this.state;
-    const rainbows = palettes.map((palette) => <Rainbow colors={palette} key={this.key} />);
+    const rainbows = palettes.map(palette => (
+      <Rainbow colors={palette} key={this.key} />
+    ));
     return (
       <div>
         <LittleUni colors={colors} />
