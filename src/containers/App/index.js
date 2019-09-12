@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import randomColor from 'randomcolor';
 import Unicorn from '../../components/Unicorn';
 import Gallery from '../../components/ProjectGallery';
 import * as actions from '../../redux/actions';
-import TileContainer from '../TileContainer';
+import Generator from '../Generator';
 import Palette from '../../components/Palette';
 import getProjects from '../../utils/thunks/getProjects';
 
@@ -38,17 +37,8 @@ export class App extends Component {
   componentDidMount() {
     const projUrl = 'https://unicolors.herokuapp.com/api/v1/projects';
     const palUrl = 'https://unicolors.herokuapp.com/api/v1/palettes';
-    this.getRandomColors();
     this.props.getProjects(projUrl, palUrl);
   }
-
-  getRandomColors = () => {
-    const newCurrentColors = [];
-    for (let i = 0; i < 5; i++) {
-      newCurrentColors.push(randomColor());
-    }
-    this.props.setCurrentColors(newCurrentColors);
-  };
 
   render() {
     const { currentProject, currentPalettes, loading } = this.state;
@@ -71,11 +61,7 @@ export class App extends Component {
           <h3>Palettes</h3>
           {loading === false && palettes}
         </section>
-        <section className="new-palette-section">
-          <h3>Color Generator</h3>
-          <TileContainer />
-          <button onClick={this.getRandomColors}>Generate Colors</button>
-        </section>
+        <Generator />
         <section className="new-project-form">
           <input type="text" placeholder="name" />
           <button type="submit" className="save-project-btn">
