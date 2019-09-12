@@ -1,12 +1,14 @@
 import React from 'react';
 
 const Palette = ({ name, colors }) => {
-  const blocks = colors.map((color, i) => (
-    <li
-      className={`color-${i} block-li`}
-      style={{ backgroundColor: color }}
-    ></li>
-  ));
+  const blocks = !colors
+    ? ''
+    : colors.map((color, i) => (
+        <li
+          className={`color-${i} block-li`}
+          style={{ backgroundColor: color }}
+        ></li>
+      ));
   return (
     <article className="palette-wrapper">
       <h4>{name}:</h4>
