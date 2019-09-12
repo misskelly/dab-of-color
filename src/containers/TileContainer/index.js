@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Tile from '../../components/Tiles';
+import Tile from '../../components/Tile';
 
 export class TileContainer extends Component {
   constructor(props) {
