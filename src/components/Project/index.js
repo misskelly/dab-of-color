@@ -23,9 +23,8 @@ export default class Project extends Component {
   }
 
   componentDidMount = () => {
-    fetchAll('https://unicolors.herokuapp.com/api/v1/palettes').then(res =>
-      console.log(res)
-    );
+    fetchAll('https://unicolors.herokuapp.com/api/v1/palettes')
+      .then(res => console.log(res));
     const color = randomColor();
   };
 
