@@ -1,6 +1,6 @@
-import getAll from './getAll';
+import fetchAll from './fetchAll';
 
-describe('getAll', () => {
+describe('fetchAll', () => {
   const mockUrl = 'https://unicolors.com/api/v1/projects';
   const mockResult = [{ id: 1, name: 'Bob' }];
   window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
@@ -9,12 +9,12 @@ describe('getAll', () => {
     }));
 
   it('should fetch using correct url parameter', () => {
-    getAll(mockUrl);
+    fetchAll(mockUrl);
     expect(window.fetch).toHaveBeenCalledWith(mockUrl);
   });
 
   it('should return all items from database if fetch status ok', async () => {
-    const result = await getAll(mockUrl);
+    const result = await fetchAll(mockUrl);
     await expect(result).toEqual(mockResult);
   });
 
@@ -26,6 +26,6 @@ describe('getAll', () => {
       ok: false
     }));
 
-    await expect(getAll(mockUrl)).rejects.toEqual(expected);
+    await expect(fetchAll(mockUrl)).rejects.toEqual(expected);
   });
 });

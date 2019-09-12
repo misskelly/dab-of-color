@@ -9,13 +9,16 @@ describe('postNew', () => {
   window.fetch = jest.fn().mockImplementation(() =>
     Promise.resolve({
       ok: true,
-      json: () => Promise.resolve({
-        id: 1
-      })
-    }));
+      json: () =>
+        Promise.resolve({
+          id: 1
+        })
+    })
+  );
 
   it('should fetch using correct parameters', () => {
-    postNew(mockUrl, mockBody);
+    const mockPath = 'palettes';
+    postNew(mockPath, mockBody);
     const expectedSecondArg = {
       method: 'POST',
       body: JSON.stringify(mockBody),
@@ -23,7 +26,10 @@ describe('postNew', () => {
         'Content-Type': 'application/json'
       }
     };
-    expect(window.fetch).toHaveBeenCalledWith(mockUrl, expectedSecondArg);
+    expect(window.fetch).toHaveBeenCalledWith(
+      'https://unicolors.herokuapp.com/api/v1/palettes',
+      expectedSecondArg
+    );
   });
 
   it('should return project id with successfull fetch', async () => {
@@ -35,12 +41,17 @@ describe('postNew', () => {
   });
 
   it('should return an error if post fails', async () => {
-    const expected = Error('Failed to add project: I hate it when things do not work the way you want them to.');
+    const expected = Error(
+      'Failed to post: I hate it when things do not work the way you want them to.'
+    );
 
-    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-      statusText: 'I hate it when things do not work the way you want them to.',
-      ok: false
-    }));
+    window.fetch = jest.fn().mockImplementation(() =>
+      Promise.resolve({
+        statusText:
+          'I hate it when things do not work the way you want them to.',
+        ok: false
+      })
+    );
 
     await expect(postNew(mockUrl, mockBody)).rejects.toEqual(expected);
   });
