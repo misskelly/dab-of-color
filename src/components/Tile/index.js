@@ -1,7 +1,23 @@
-import React from 'react'
+import React from 'react';
 
-export default function Tile(props) {
+export const Tile = props => {
+  const { color, lockColor, isLocked } = props;
+  const locked = isLocked ? ' locked' : '';
+
+  const handleLock = () => {
+    // render lock SVG
+    lockColor(color);
+  };
   return (
-      <a className='tile' style={{backgroundColor: props.color}}>{props.color}</a>
-  )
-}
+    <button
+      type="button"
+      onClick={handleLock}
+      className="tile"
+      style={{ backgroundColor: color }}
+    >
+      {color} {locked}
+    </button>
+  );
+};
+
+export default Tile;

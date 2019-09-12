@@ -11,13 +11,15 @@ export class TileContainer extends Component {
 
   lockColor = color => {
     const { locked } = this.state;
-    const newLocked = locked.map((bool, index) => {
-      if (index === color) {
-        return !bool;
+    const { currentColors } = this.props;
+    const newLocked = locked.map((lock, index) => {
+      if (currentColors[index] === color) {
+        return !lock;
       } else {
-        return bool;
+        return lock;
       }
     });
+
     this.setState({ locked: newLocked });
   };
 
