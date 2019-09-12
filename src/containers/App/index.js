@@ -47,7 +47,7 @@ export class App extends Component {
     for (let i = 0; i < 5; i++) {
       newCurrentColors.push(randomColor());
     }
-    this.props.getCurrentColors(newCurrentColors);
+    this.props.setCurrentColors(newCurrentColors);
   };
 
   render() {
@@ -91,7 +91,7 @@ export class App extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  getCurrentColors: colors => dispatch(actions.getCurrentColors(colors)),
+  setCurrentColors: colors => dispatch(actions.setCurrentColors(colors)),
   getProjects: (projectUrl, paletteUrl) =>
     dispatch(getProjects(projectUrl, paletteUrl))
 });

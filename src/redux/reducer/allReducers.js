@@ -5,16 +5,16 @@ export const loadingReducer = (state = false, action) => {
     default:
       return state;
   }
-}
+};
 
 export const currentColorsReducer = (state = [], action) => {
   switch (action.type) {
-    case 'GET_CURRENT_COLORS':
+    case 'SET_CURRENT_COLORS':
       return action.colors;
     default:
       return state;
   }
-}
+};
 
 export const currentProjectReducer = (state = {}, action) => {
   switch (action.type) {
@@ -23,7 +23,7 @@ export const currentProjectReducer = (state = {}, action) => {
     default:
       return state;
   }
-}
+};
 
 export const allProjectsReducer = (state = [], action) => {
   switch (action.type) {
@@ -32,4 +32,4 @@ export const allProjectsReducer = (state = [], action) => {
     default:
       return state;
   }
-}
+};
