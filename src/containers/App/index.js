@@ -41,7 +41,7 @@ export class App extends Component {
   }
 
   render() {
-    const { currentProject, currentPalettes, loading } = this.state;
+    const { currentPalettes, loading } = this.state;
     const palettes = currentPalettes.map(pal => {
       const { name, color_1, color_2, color_3, color_4, color_5 } = pal;
       return (

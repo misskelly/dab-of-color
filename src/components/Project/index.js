@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import randomColor from 'randomcolor';
+// import randomColor from 'randomcolor';
 import uniqid from 'uniqid';
 import LittleUni from '../Unicorn';
 import Rainbow from '../Rainbow';
@@ -23,9 +23,9 @@ export default class Project extends Component {
   }
 
   componentDidMount = () => {
-    fetchAll('https://unicolors.herokuapp.com/api/v1/palettes')
-      .then(res => console.log(res));
-    const color = randomColor();
+    fetchAll('https://unicolors.herokuapp.com/api/v1/palettes').then(res =>
+      console.log(res)
+    );
   };
 
   key = () => uniqid();
