@@ -19,5 +19,8 @@ jobs:
           name: Run Tests
           command: npm test -- --coverage
       - run:
-          name: 'Deploy to Firebase Hosting'
-          command: './node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN'
+          name: Build Project
+          command: npm run build
+      - run:
+          name: Deploy to Firebase Hosting
+          command: ./node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN
