@@ -8,32 +8,41 @@ export class UniForm extends Component {
     super(props);
 
     this.state = {
-      name: ''
-      // palettes: [],
+      newName: '',
+      project: {
+        name: '',
+        palettes: []
+      }
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(e) {
-    this.setState({ name: e.target.value });
+    this.setState({ newName: e.target.value });
   }
 
   handleSubmit(e) {
+    const { newName } = this.state;
     e.preventDefault();
-    alert(`Submitted name: '${this.state.name}'`);
+    this.setState({
+      newName: '',
+      project: { name: newName }
+    });
   }
 
   render() {
-    const { name } = this.state;
+    const { newName, project } = this.state;
     return (
       <form className="new-uni-form" onSubmit={this.handleSubmit}>
-        <h2 className="name-heading">Hello, my name is</h2>
+        {project.name.length > 0 && (
+          <h2 className="name-heading">Hello, my name is {project.name}</h2>
+        )}
         <label className="name-input-label" htmlFor="name-input">
           Name
           <input
             type="text"
-            value={name}
+            value={newName}
             className="name-input"
             placeholder="Bob"
             onChange={this.handleChange}
