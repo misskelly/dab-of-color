@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Unicorn from '../../components/Unicorn';
-import Gallery from '../../components/ProjectGallery';
+import MainUni from '../../components/Unicorn';
+import ProjectGallery from '../../components/ProjectGallery';
 import * as actions from '../../redux/actions';
-import Generator from '../Generator';
+import PaletteGenerator from '../Generator';
 import Palette from '../../components/Palette';
+import NewUniForm from '../../components/Form';
 import getProjects from '../../utils/thunks/getProjects';
 
 export class App extends Component {
@@ -56,20 +57,15 @@ export class App extends Component {
         <header className="header">
           <h1>Palette Picker</h1>
         </header>
-        <Unicorn />
+        <MainUni />
         <section className="palettes-big">
           <h3>Palettes</h3>
           {loading === false && palettes}
         </section>
-        <Generator />
-        <section className="new-project-form">
-          <input type="text" placeholder="name" />
-          <button type="submit" className="save-project-btn">
-            Save
-          </button>
-        </section>
+        <PaletteGenerator />
+        <NewUniForm />
         <section className="gallery-section">
-          <Gallery />
+          <ProjectGallery />
         </section>
       </main>
     );

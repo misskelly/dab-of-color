@@ -43,7 +43,7 @@ export class Generator extends Component {
 
   updatePalette = () => {
     const { locked } = this.state;
-    const { currentColors } = this.props;
+    const { currentColors, setCurrentColors } = this.props;
     const updated = locked.map((color, index) => {
       if (color) {
         console.log(color);
@@ -52,12 +52,14 @@ export class Generator extends Component {
         return randomColor();
       }
     });
-    this.props.setCurrentColors(updated);
+    setCurrentColors(updated);
   };
 
   render() {
-    const displayTiles = this.props.currentColors.map((color, index) => {
-      const isLocked = this.state.locked[index];
+    const { locked } = this.state;
+    const { currentColors } = this.props;
+    const displayTiles = currentColors.map((color, index) => {
+      const isLocked = locked[index];
       return (
         <Tile
           key={color}
