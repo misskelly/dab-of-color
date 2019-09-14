@@ -6,9 +6,19 @@ import * as actions from '../../redux/actions';
 export class UniForm extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       newName: '',
+      paletteName: '',
+      paletteCollection: [
+        {
+          name: 'coolman2',
+          color_1: '#8e5cd6',
+          color_2: '#adf49f',
+          color_3: '#efc8aa',
+          color_4: '#b4fca4',
+          color_5: '#e3e858'
+        }
+      ],
       project: {
         name: '',
         palettes: []
@@ -18,21 +28,43 @@ export class UniForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(e) {
-    this.setState({ newName: e.target.value });
-  }
+  handleChange = (e, field) => {
+    this.setState({ [field]: e.target.value });
+  };
 
-  handleSubmit(e) {
-    const { newName } = this.state;
+  handleSubmit = e => {
+    const { newName, paletteCollection } = this.state;
     e.preventDefault();
     this.setState({
-      newName: '',
-      project: { name: newName }
+      // newName: '',
+      project: {
+        name: newName,
+        palettes: paletteCollection
+      }
     });
-  }
+  };
+
+  addPalette = () => {
+    const { currentColors } = this.props;
+    const { paletteName, paletteCollection, project } = this.state;
+    const newPalette = {
+      name: paletteName,
+      color_1: currentColors[0],
+      color_2: currentColors[1],
+      color_3: currentColors[2],
+      color_4: currentColors[3],
+      color_5: currentColors[4]
+    };
+    console.log(paletteCollection);
+    const updatedPalettes = [...paletteCollection, newPalette];
+    this.setState({
+      paletteCollection: updatedPalettes
+    });
+    console.log(this.state);
+  };
 
   render() {
-    const { newName, project } = this.state;
+    const { newName, paletteName, project } = this.state;
     return (
       <form className="new-uni-form" onSubmit={this.handleSubmit}>
         {project.name.length > 0 && (
@@ -45,9 +77,29 @@ export class UniForm extends Component {
             value={newName}
             className="name-input"
             placeholder="Bob"
-            onChange={this.handleChange}
+            onChange={e => this.handleChange(e, 'newName')}
           />
         </label>
+        <label
+          className="palette-name-input-label"
+          htmlFor="palette-name-input"
+        >
+          Name this color scheme:
+          <input
+            type="text"
+            value={paletteName}
+            className="palette-name-input"
+            placeholder="Cotton Candy"
+            onChange={e => this.handleChange(e, 'paletteName')}
+          />
+        </label>
+        <button
+          type="button"
+          className="add-palette-btn"
+          onClick={this.addPalette}
+        >
+          +
+        </button>
         <button className="name-btn" type="submit">
           Save
         </button>
@@ -58,12 +110,10 @@ export class UniForm extends Component {
 
 export const mapDispatchToProps = dispatch => ({
   setCurrentColors: colors => dispatch(actions.setCurrentColors(colors))
-  // getProjects: (projectUrl, paletteUrl) => dispatch(getProjects(projectUrl, paletteUrl))
 });
 
 export const mapStateToProps = state => ({
-  currentColors: state.currentColors,
-  allProjects: state.allProjects
+  currentColors: state.currentColors
 });
 
 export default connect(
