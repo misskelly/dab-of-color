@@ -1,20 +1,21 @@
-import { getAllProjects, isLoading } from '../../redux/actions';
-import fetchAll from '../apiCalls/fetchAll';
+import * as actions from '../../redux/actions';
+import { fetchAll } from '../apiCalls/fetchAll';
 
-const getProjects = (projectUrl, paletteUrl) => async (dispatch) => {
+const getProjects = () => async dispatch => {
+  const url = path => `https://unicolors.herokuapp.com/api/v1/${path}`;
   try {
-    dispatch(isLoading(true));
-    const projects = await fetchAll(projectUrl);
-    const newPalettes = await fetchAll(paletteUrl);
-    dispatch(isLoading(false));
-    const cleanProjects = projects.map((project) => ({
+    dispatch(actions.isLoading(true));
+    const projects = await fetchAll(url('projects'));
+    const newPalettes = await fetchAll(url('palettes'));
+    const cleanProjects = projects.map(project => ({
       id: project.id,
       name: project.name,
-      palettes: newPalettes.filter((palette) => palette.project_id === project.id)
+      palettes: newPalettes.find(palette => palette.project_id === project.id)
     }));
-    dispatch(getAllProjects(cleanProjects));
+    dispatch(actions.setAllProjects(cleanProjects));
+    dispatch(actions.isLoading(false));
   } catch (error) {
-    // dispatch(hasErrored(error.message))
+    dispatch(actions.hasErrored(error.message));
   }
 };
 
