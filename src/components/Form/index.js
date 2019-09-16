@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions';
+import currentProject from '../../utils/thunks/currentProject';
 
 export class UniForm extends Component {
   constructor(props) {
@@ -33,15 +34,14 @@ export class UniForm extends Component {
   };
 
   handleSubmit = e => {
-    const { newName, paletteCollection } = this.state;
-    e.preventDefault();
+    const { newName, paletteCollection, project } = this.state;
+    const { currentProject } = this.props;
     this.setState({
-      // newName: '',
-      project: {
-        name: newName,
-        palettes: paletteCollection
-      }
+      newName: '',
+      paletteName: ''
     });
+    e.preventDefault();
+    currentProject({ name: newName, palettes: paletteCollection });
   };
 
   addPalette = () => {
@@ -55,7 +55,6 @@ export class UniForm extends Component {
       color_4: currentColors[3],
       color_5: currentColors[4]
     };
-    console.log(paletteCollection);
     const updatedPalettes = [...paletteCollection, newPalette];
     this.setState({
       paletteCollection: updatedPalettes
@@ -109,7 +108,8 @@ export class UniForm extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  setCurrentColors: colors => dispatch(actions.setCurrentColors(colors))
+  setCurrentColors: colors => dispatch(actions.setCurrentColors(colors)),
+  currentProject: project => dispatch(currentProject(project))
 });
 
 export const mapStateToProps = state => ({
