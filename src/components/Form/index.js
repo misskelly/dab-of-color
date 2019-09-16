@@ -1,29 +1,18 @@
 /* eslint-disable no-alert */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import randomColor from 'randomcolor';
 import * as actions from '../../redux/actions';
 import currentProject from '../../utils/thunks/currentProject';
+import { cleanPalette } from '../../utils/cleaners/cleanPalette';
 
 export class UniForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newName: '',
+      unicornName: '',
       paletteName: '',
-      paletteCollection: [
-        {
-          name: 'coolman2',
-          color_1: '#8e5cd6',
-          color_2: '#adf49f',
-          color_3: '#efc8aa',
-          color_4: '#b4fca4',
-          color_5: '#e3e858'
-        }
-      ],
-      project: {
-        name: '',
-        palettes: []
-      }
+      featuredPalettes: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -34,49 +23,58 @@ export class UniForm extends Component {
   };
 
   handleSubmit = e => {
-    const { newName, paletteCollection, project } = this.state;
-    const { currentProject } = this.props;
-    this.setState({
-      newName: '',
-      paletteName: ''
-    });
     e.preventDefault();
-    currentProject({ name: newName, palettes: paletteCollection });
+    const { unicornName } = this.state;
+    const { currentProject } = this.props;
+    this.addPalette();
+    currentProject({ name: unicornName, palettes: this.state.featuredPalettes });
+    this.setState({
+      unicornName: '',
+      paletteName: '',
+      featuredPalettes: []
+    });
+  };
+
+  generateNewPalette = () => {
+    const { setCurrentColors } = this.props;
+    const newCurrentColors = [];
+    for (let i = 0; i < 5; i++) {
+      newCurrentColors.push(randomColor());
+    }
+    setCurrentColors(newCurrentColors);
   };
 
   addPalette = () => {
     const { currentColors } = this.props;
-    const { paletteName, paletteCollection, project } = this.state;
-    const newPalette = {
-      name: paletteName,
-      color_1: currentColors[0],
-      color_2: currentColors[1],
-      color_3: currentColors[2],
-      color_4: currentColors[3],
-      color_5: currentColors[4]
-    };
-    const updatedPalettes = [...paletteCollection, newPalette];
-    this.setState({
-      paletteCollection: updatedPalettes
+    const { paletteName, featuredPalettes } = this.state;
+    const newPalette = cleanPalette(paletteName, currentColors);
+    const palettes = featuredPalettes.concat(newPalette);
+    console.log(palettes)
+    this.generateNewPalette();
+    return this.setState({
+      paletteName: '',
+      featuredPalettes: palettes
     });
-    console.log(this.state);
   };
 
   render() {
-    const { newName, paletteName, project } = this.state;
+    const { unicornName, paletteName } = this.state;
+    const { featuredProject } = this.props;
     return (
       <form className="new-uni-form" onSubmit={this.handleSubmit}>
-        {project.name.length > 0 && (
-          <h2 className="name-heading">Hello, my name is {project.name}</h2>
+        {unicornName.length > 1 && (
+          <h2 className="name-heading">
+            Hello, my name is {unicornName}
+          </h2>
         )}
         <label className="name-input-label" htmlFor="name-input">
           Name
           <input
             type="text"
-            value={newName}
+            value={unicornName}
             className="name-input"
             placeholder="Bob"
-            onChange={e => this.handleChange(e, 'newName')}
+            onChange={e => this.handleChange(e, 'unicornName')}
           />
         </label>
         <label
