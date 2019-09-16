@@ -4,8 +4,9 @@ import * as reducers from './allReducers';
 const rootReducer = combineReducers({
   isLoading: reducers.loadingReducer,
   currentColors: reducers.currentColorsReducer,
-  currentProject: reducers.currentProjectReducer,
-  allProjects: reducers.allProjectsReducer
-})
+  featuredProject: reducers.currentProjectReducer,
+  allProjects: reducers.allProjectsReducer,
+  hasErrored: reducers.errorReducer
+});
 
 export default rootReducer;
