@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions';
 import randomColor from 'randomcolor';
-import getProjects from '../../utils/thunks/getProjects';
 
 import Tile from '../../components/Tile';
 
@@ -80,9 +79,7 @@ export class Generator extends Component {
 }
 
 export const mapDispatchToProps = dispatch => ({
-  setCurrentColors: colors => dispatch(actions.setCurrentColors(colors)),
-  getProjects: (projectUrl, paletteUrl) =>
-    dispatch(getProjects(projectUrl, paletteUrl))
+  setCurrentColors: colors => dispatch(actions.setCurrentColors(colors))
 });
 
 export const mapStateToProps = state => ({

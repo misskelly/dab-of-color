@@ -8,13 +8,13 @@ export const hasErrored = message => ({
   message
 });
 
-export const getCurrentProject = project => ({
-  type: 'GET_CURRENT_PROJECT',
+export const setCurrentProject = project => ({
+  type: 'SET_CURRENT_PROJECT',
   project
 });
 
-export const getAllProjects = projects => ({
-  type: 'GET_ALL_PROJECTS',
+export const setAllProjects = projects => ({
+  type: 'SET_ALL_PROJECTS',
   projects
 });
 
