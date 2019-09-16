@@ -29,13 +29,6 @@ const currentProject = project => async dispatch => {
     dispatch(getProjects());
     dispatch(actions.setCurrentProject(featured));
     dispatch(actions.isLoading(false));
-    // save new unicorn
-    // save palette to new unicorn
-    // update current project in redux to include current info
-    // display current info on dom
-
-    // return actions.setCurrentProject(savedProject);
-    // const currentPalettes =
   } catch (error) {
     dispatch(actions.hasErrored(error.message));
   }

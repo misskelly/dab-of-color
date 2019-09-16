@@ -10,7 +10,7 @@ const getProjects = () => async dispatch => {
     const cleanProjects = projects.map(project => ({
       id: project.id,
       name: project.name,
-      palettes: newPalettes.find(palette => palette.project_id === project.id)
+      palettes: newPalettes.filter(palette => palette.project_id === project.id)
     }));
     dispatch(actions.setAllProjects(cleanProjects));
     dispatch(actions.isLoading(false));
