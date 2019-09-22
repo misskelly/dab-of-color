@@ -9,14 +9,14 @@ export class Unicorn extends Component {
     if (!small) {
       palette = currentColors;
     } else if (!colors.length) {
-      const colorsArr = [
+      palette = [
         colors.color_1,
         colors.color_2,
         colors.color_3,
         colors.color_4,
         colors.color_5
       ];
-      palette = colorsArr;
+      // palette = colorsArr;
     }
 
     return (

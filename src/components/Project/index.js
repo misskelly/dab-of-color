@@ -9,17 +9,17 @@ export default class Project extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      palettes: [
-        {
-          color1: '#F655AA',
-          color2: '#FBA904',
-          color3: '#7AFDDF',
-          color4: '#571E7F',
-          color5: '#0071BD'
-        }
-      ]
-    };
+    // this.state = {
+    //   palettes: [
+    //     {
+    //       color1: '#F655AA',
+    //       color2: '#FBA904',
+    //       color3: '#7AFDDF',
+    //       color4: '#571E7F',
+    //       color5: '#0071BD'
+    //     }
+    //   ]
+    // };
   }
 
   componentDidMount = () => {
@@ -40,7 +40,9 @@ export default class Project extends Component {
         {palettes.length >= 1 && (
           <LittleUni colors={palettes[0]} small={true} />
         )}
+        <ul className="rainbow-container">
         {rainbows}
+        </ul>
       </div>
     );
   }
