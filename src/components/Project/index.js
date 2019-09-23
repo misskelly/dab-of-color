@@ -5,7 +5,7 @@ import LittleUni from '../Unicorn';
 import Rainbow from '../Rainbow';
 import fetchAll from '../../utils/apiCalls/fetchAll';
 
-export default class Project extends Component {
+export class Project extends Component {
   constructor(props) {
     super(props);
 
@@ -47,3 +47,4 @@ export default class Project extends Component {
     );
   }
 }
+ export default Project;
