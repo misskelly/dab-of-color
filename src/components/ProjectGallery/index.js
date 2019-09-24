@@ -8,15 +8,17 @@ export class Gallery extends Component {
     const { allProjects } = this.props;
     const filtered = allProjects.filter(project => project.palettes.length);
     const projects = unicorns => {
-      const key = uniqid();
-      const lilUnis = unicorns.map(uni => (
-        <Project
-          key={key}
-          name={uni.name}
-          id={uni.id}
-          palettes={uni.palettes}
-        />
-      ));
+      const lilUnis = unicorns.map(uni => {
+        const key = uniqid();
+        return (
+          <Project
+            key={key}
+            name={uni.name}
+            id={uni.id}
+            palettes={uni.palettes}
+          />
+        );
+      });
       return lilUnis;
     };
     return <section className="project-gallery">{projects(filtered)}</section>;
