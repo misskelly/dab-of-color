@@ -72,7 +72,7 @@ export class Generator extends Component {
       <section className="generator-section">
         <h3 className="generator-heading heading">Color Generator</h3>
         <div className="tile-container">{displayTiles}</div>
-        <button onClick={this.updatePalette}>Generate Colors</button>
+        <button className="generator-btn" onClick={this.updatePalette}>Generate Colors</button>
       </section>
     );
   }

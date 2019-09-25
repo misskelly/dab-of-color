@@ -18,6 +18,13 @@ export class UniForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const { featuredProject } = this.props;
+    if (featuredProject !== undefined) {
+      console.log('featured project: ', featuredProject)
+    }
+  }
+
   handleChange = (e, field) => {
     this.setState({ [field]: e.target.value });
   };
@@ -60,6 +67,9 @@ export class UniForm extends Component {
   render() {
     const { unicornName, paletteName } = this.state;
     const { featuredProject } = this.props;
+    if(featuredProject !== undefined) {
+      console.log('featured project: ',featuredProject)
+    }
     return (
       <form className="new-uni-form" onSubmit={this.handleSubmit}>
         {unicornName.length > 1 && (
@@ -111,7 +121,8 @@ export const mapDispatchToProps = dispatch => ({
 });
 
 export const mapStateToProps = state => ({
-  currentColors: state.currentColors
+  currentColors: state.currentColors,
+  featuredProject: state.featuredProject
 });
 
 export default connect(
