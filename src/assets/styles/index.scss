@@ -1,6 +1,7 @@
+@import './variables';
 @import '../../containers/App/App';
 @import '../../containers/Generator/Generator';
-@import '../../components/Form';
+@import '../../components/Form/Form';
 @import '../../components/Palette/Palette';
 @import '../../components/Unicorn/Unicorn';
 @import '../../components/Project/Project';
@@ -19,4 +20,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+li {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }

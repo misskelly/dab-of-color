@@ -7,7 +7,7 @@ const Palette = ({ name, colors }) => {
         <li
           className={`color-${i} block-li`}
           style={{ backgroundColor: color }}
-        ></li>
+        />
       ));
   return (
     <article className="palette-wrapper">

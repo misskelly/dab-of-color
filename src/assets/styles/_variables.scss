@@ -1,0 +1,13 @@
+@mixin oval-btn {
+  border: 2px solid black;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  transition: all 0.2s ease;
+  &:hover {
+    background: black;
+    color: #ffffff;
+    cursor: pointer;
+  }
+}

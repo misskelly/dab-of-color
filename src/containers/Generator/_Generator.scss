@@ -1,6 +1,13 @@
+.generator-section {
+  text-align: center;
+}
 .tile-container {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   height: 260px;
+}
+
+.generator-btn {
+  @include oval-btn;
 }

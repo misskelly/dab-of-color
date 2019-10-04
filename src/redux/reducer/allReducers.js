@@ -7,6 +7,15 @@ export const loadingReducer = (state = false, action) => {
   }
 };
 
+export const errorReducer = (state = '', action) => {
+  switch (action.type) {
+    case 'HAS_ERRORED':
+      return action.message;
+    default:
+      return state;
+  }
+};
+
 export const currentColorsReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_CURRENT_COLORS':
@@ -18,7 +27,7 @@ export const currentColorsReducer = (state = [], action) => {
 
 export const currentProjectReducer = (state = {}, action) => {
   switch (action.type) {
-    case 'GET_CURRENT_PROJECT':
+    case 'SET_CURRENT_PROJECT':
       return action.project;
     default:
       return state;
@@ -27,7 +36,7 @@ export const currentProjectReducer = (state = {}, action) => {
 
 export const allProjectsReducer = (state = [], action) => {
   switch (action.type) {
-    case 'GET_ALL_PROJECTS':
+    case 'SET_ALL_PROJECTS':
       return action.projects;
     default:
       return state;

@@ -1,47 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Unicorn from '../../components/Unicorn';
-import Gallery from '../../components/ProjectGallery';
+import MainUni from '../../components/Unicorn';
+import ProjectGallery from '../../components/ProjectGallery';
 import * as actions from '../../redux/actions';
-import Generator from '../Generator';
+import PaletteGenerator from '../Generator';
 import Palette from '../../components/Palette';
+import NewUniForm from '../../components/Form';
 import getProjects from '../../utils/thunks/getProjects';
+import currentProject from '../../utils/thunks/currentProject';
 
 export class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentProject: '',
-      currentPalettes: [
-        {
-          name: 'coolman2',
-          color_1: '#8e5cd6',
-          color_2: '#adf49f',
-          color_3: '#efc8aa',
-          color_4: '#b4fca4',
-          color_5: '#e3e858'
-        },
-        {
-          name: 'Dazzle',
-          color_1: '#32213A',
-          color_2: '#383B53',
-          color_3: '#66717E',
-          color_4: '#D4D6B9',
-          color_5: '#D1CAA1'
-        }
-      ],
-      loading: false
+      currentPalettes: []
     };
   }
 
   componentDidMount() {
-    const projUrl = 'https://unicolors.herokuapp.com/api/v1/projects';
-    const palUrl = 'https://unicolors.herokuapp.com/api/v1/palettes';
-    this.props.getProjects(projUrl, palUrl);
+    const { getProjects } = this.props;
+    getProjects();
   }
 
-  render() {
-    const { currentPalettes, loading } = this.state;
+  featuredPallets() {
+    const { currentPalettes } = this.state;
     const palettes = currentPalettes.map(pal => {
       const { name, color_1, color_2, color_3, color_4, color_5 } = pal;
       return (
@@ -51,25 +33,26 @@ export class App extends Component {
         />
       );
     });
+
+    return palettes;
+  }
+
+  render() {
+    const { currentColors } = this.props;
     return (
       <main className="app">
         <header className="header">
           <h1>Palette Picker</h1>
         </header>
-        <Unicorn />
+        <MainUni />
         <section className="palettes-big">
           <h3>Palettes</h3>
-          {loading === false && palettes}
+          {currentColors.length === 5 && this.featuredPallets()}
         </section>
-        <Generator />
-        <section className="new-project-form">
-          <input type="text" placeholder="name" />
-          <button type="submit" className="save-project-btn">
-            Save
-          </button>
-        </section>
+        <PaletteGenerator />
+        <NewUniForm />
         <section className="gallery-section">
-          <Gallery />
+          <ProjectGallery />
         </section>
       </main>
     );
@@ -78,13 +61,16 @@ export class App extends Component {
 
 export const mapDispatchToProps = dispatch => ({
   setCurrentColors: colors => dispatch(actions.setCurrentColors(colors)),
-  getProjects: (projectUrl, paletteUrl) =>
-    dispatch(getProjects(projectUrl, paletteUrl))
+  setCurrentProject: project => dispatch(actions.setCurrentProject(project)),
+  getProjects: () => dispatch(getProjects()),
+  currentProject: project => dispatch(currentProject(project))
 });
 
 export const mapStateToProps = state => ({
   currentColors: state.currentColors,
-  allProjects: state.allProjects
+  allProjects: state.allProjects,
+  featuredProject: state.featuredProject,
+  isLoading: state.isLoading
 });
 
 export default connect(

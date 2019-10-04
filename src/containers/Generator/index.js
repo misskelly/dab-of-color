@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../redux/actions';
 import randomColor from 'randomcolor';
-import getProjects from '../../utils/thunks/getProjects';
 
 import Tile from '../../components/Tile';
 
@@ -43,7 +42,7 @@ export class Generator extends Component {
 
   updatePalette = () => {
     const { locked } = this.state;
-    const { currentColors } = this.props;
+    const { currentColors, setCurrentColors } = this.props;
     const updated = locked.map((color, index) => {
       if (color) {
         console.log(color);
@@ -52,12 +51,14 @@ export class Generator extends Component {
         return randomColor();
       }
     });
-    this.props.setCurrentColors(updated);
+    setCurrentColors(updated);
   };
 
   render() {
-    const displayTiles = this.props.currentColors.map((color, index) => {
-      const isLocked = this.state.locked[index];
+    const { locked } = this.state;
+    const { currentColors } = this.props;
+    const displayTiles = currentColors.map((color, index) => {
+      const isLocked = locked[index];
       return (
         <Tile
           key={color}
@@ -71,16 +72,14 @@ export class Generator extends Component {
       <section className="generator-section">
         <h3 className="generator-heading heading">Color Generator</h3>
         <div className="tile-container">{displayTiles}</div>
-        <button onClick={this.updatePalette}>Generate Colors</button>
+        <button className="generator-btn" onClick={this.updatePalette}>Generate Colors</button>
       </section>
     );
   }
 }
 
 export const mapDispatchToProps = dispatch => ({
-  setCurrentColors: colors => dispatch(actions.setCurrentColors(colors)),
-  getProjects: (projectUrl, paletteUrl) =>
-    dispatch(getProjects(projectUrl, paletteUrl))
+  setCurrentColors: colors => dispatch(actions.setCurrentColors(colors))
 });
 
 export const mapStateToProps = state => ({
