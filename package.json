@@ -60,5 +60,6 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "firebase-tools": "^7.3.2",
     "prettier": "^1.18.2"
-  }
+  },
+  "homepage": "https://dab-of-colors.web.app/"
 }
