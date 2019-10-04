@@ -5,9 +5,6 @@ import Rainbow from '../Rainbow';
 import fetchAll from '../../utils/apiCalls/fetchAll';
 
 export class Project extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount = () => {
     fetchAll('https://unicolors.herokuapp.com/api/v1/palettes')
