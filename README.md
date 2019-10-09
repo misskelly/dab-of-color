@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/misskelly/dab-of-color.svg?style=svg)](https://circleci.com/gh/misskelly/dab-of-color)
+[![CircleCI](https://circleci.com/gh/misskelly/dab-of-colors.svg?style=svg)](https://circleci.com/gh/misskelly/dab-of-colors)
 
 This is a work in progress!! [Demo app here!](https://dab-of-colors.firebaseapp.com/).
 
