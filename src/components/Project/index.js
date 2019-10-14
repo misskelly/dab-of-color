@@ -8,8 +8,7 @@ export class Project extends Component {
 
   componentDidMount = () => {
     fetchAll('https://unicolors.herokuapp.com/api/v1/palettes')
-      .then(res => res.filter(palette => palette.project_id === this.props.id))
-      .then(pals => console.log(pals));
+      .then(res => res.find(palette => palette.project_id === this.props.id))
   };
   // TODO: 
         // STYLE PROJECT CARD

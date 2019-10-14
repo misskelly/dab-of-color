@@ -5,6 +5,7 @@ import * as actions from '../../redux/actions';
 import Palette from '../../components/Palette';
 // import currentProject from '../../utils/thunks/currentProject';
 
+// TODO: PROPTYPES
 export const FeaturedPalettes = props => {
   let palettes;
   let currentPalettes;
