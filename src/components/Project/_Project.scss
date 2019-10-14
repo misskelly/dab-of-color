@@ -4,3 +4,8 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 0.5rem;
 }
+
+.card-heading {
+  font-family: $name-heading;
+  text-align: center;
+}

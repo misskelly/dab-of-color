@@ -42,7 +42,9 @@ export class App extends Component {
     return (
       <main className="app">
         <header className="header">
-          <h1>Palette Picker</h1>
+          <a href="https://dab-of-colors.web.app/" className="main-heading-a">
+            <h1 className="main-heading">DAB OF COLORS</h1>
+          </a>
         </header>
         <MainUni />
         <section className="featured-palettes">

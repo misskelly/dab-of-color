@@ -15,6 +15,11 @@
 
 .header {
   grid-area: header;
+  text-align: center;
+}
+
+.main-heading {
+  font-family: $main-heading;
 }
 
 .featured-palettes {

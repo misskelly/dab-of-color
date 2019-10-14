@@ -27,7 +27,7 @@ export class Project extends Component {
     )});
     return (
       <div className="project-card" id={`project-${id}`}>
-        <h5 className="project-card-name">{name}</h5>
+        <h5 className="card-heading">{name}</h5>
         {palettes.length >= 1 && (
           <LittleUni colors={palettes[0]} small={true} />
         )}
