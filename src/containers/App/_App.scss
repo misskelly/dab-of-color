@@ -9,22 +9,23 @@
     'form form form form'
     'gallery gallery gallery gallery';
 }
-.unicorn-wrapper {
-  grid-area: unicorn;
-}
 
 .header {
   grid-area: header;
   text-align: center;
 }
 
-.main-heading {
-  font-family: $main-heading;
-}
-
 .featured-palettes {
   grid-area: palettes;
-  width: 30%;
+  min-width: 30%;
+}
+
+.unicorn-wrapper {
+  grid-area: unicorn;
+}
+
+.main-heading {
+  font-family: $main-heading;
 }
 
 .new-palette-section {
@@ -35,9 +36,9 @@
   grid-area: form;
 }
 
-.gallery-section {
+.project-gallery {
   grid-area: gallery;
-  height: 500px;
+  width: 100%;
 }
 
 .new-palette-section {
