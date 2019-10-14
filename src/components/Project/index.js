@@ -11,7 +11,13 @@ export class Project extends Component {
       .then(res => res.filter(palette => palette.project_id === this.props.id))
       .then(pals => console.log(pals));
   };
-
+  // TODO: 
+        // STYLE PROJECT CARD
+        // MAKE CLICKABLE
+        // ON CLICK
+        // => 
+        // => 
+        // => 
   render() {
     const { name, palettes, id } = this.props;
     const rainbows = palettes.map(palette => {
@@ -20,8 +26,8 @@ export class Project extends Component {
       <Rainbow colors={palette} key={`${key}_${key}`} />
     )});
     return (
-      <div id={`project-${id}`}>
-        <h5>{name}</h5>
+      <div className="project-card" id={`project-${id}`}>
+        <h5 className="project-card-name">{name}</h5>
         {palettes.length >= 1 && (
           <LittleUni colors={palettes[0]} small={true} />
         )}

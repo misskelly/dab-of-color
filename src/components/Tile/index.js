@@ -5,7 +5,7 @@ export const Tile = props => {
   const locked = isLocked ? ' locked' : '';
 
   const handleLock = () => {
-    // render lock SVG
+    // TODO: render lock SVG
     lockColor(color);
   };
   return (

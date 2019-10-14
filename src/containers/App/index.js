@@ -45,7 +45,7 @@ export class App extends Component {
           <h1>Palette Picker</h1>
         </header>
         <MainUni />
-        <section className="palettes-big">
+        <section className="featured-palettes">
           <h3>Palettes</h3>
           {currentColors.length === 5 && this.featuredPallets()}
         </section>
