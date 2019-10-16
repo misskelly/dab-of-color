@@ -18,7 +18,6 @@ export class UniForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-
   handleChange = (e, field) => {
     this.setState({ [field]: e.target.value });
   };
@@ -72,7 +71,6 @@ export class UniForm extends Component {
     const updatedProject = { id, name, palettes };
     const update = await currentProject(updatedProject);
     return update;
-
   };
 
   resetPaletteForm = () => {
@@ -90,7 +88,6 @@ export class UniForm extends Component {
 
   render() {
     const { unicornName, paletteName, editView } = this.state;
-    const { featuredProject } = this.props;
     return (
       <section className="form-section">
         {!editView && (
