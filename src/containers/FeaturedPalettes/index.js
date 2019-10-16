@@ -1,7 +1,7 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import { connect } from 'react-redux';
-import * as actions from '../../redux/actions';
+// import * as actions from '../../redux/actions';
 import Palette from '../../components/Palette';
 // import currentProject from '../../utils/thunks/currentProject';
 

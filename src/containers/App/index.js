@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MainUni from '../../components/Unicorn';
 import ProjectGallery from '../../components/ProjectGallery';
-import * as actions from '../../redux/actions';
+// import * as actions from '../../redux/actions';
 import PaletteGenerator from '../Generator';
 import FeaturedPalettes from '../FeaturedPalettes';
 import NewUniForm from '../../components/Form';

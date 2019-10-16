@@ -32,7 +32,9 @@ export class UniForm extends Component {
   
   handleSaveName = e => {
     e.preventDefault()
-    const { featuredProject, currentProject } = this.props;
+    const { 
+      // featuredProject, 
+      currentProject } = this.props;
     const { unicornName } = this.state;
     currentProject({ name: unicornName, palettes: [] });
     this.setState({editView: true})
@@ -41,8 +43,8 @@ export class UniForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    const { unicornName } = this.state;
-    const { currentProject, currentColors } = this.props;
+    // const { unicornName } = this.state;
+    // const { currentProject, currentColors } = this.props;
     this.addPalette();
     // console.log('currentColors:  ', currentColors)
     // currentProject({ name: unicornName, palettes: });
