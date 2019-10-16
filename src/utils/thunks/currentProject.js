@@ -2,29 +2,22 @@ import postNew from '../apiCalls/postNew';
 import getProjects from './getProjects';
 import * as actions from '../../redux/actions';
 
-const savePalette = palette =>
-  postNew('palettes', palette).then(res => console.log(res));
-
-const cleanPalettes = (palettes, id) => {
-  const cleaned = palettes.map(palette => {
-    const clean = palette;
-    clean.project_id = id;
-    savePalette(clean);
-    return clean;
-  });
-  return cleaned;
-};
-
-const currentProject = project => async dispatch => {
+export const currentProject = project => async dispatch => {
   try {
     dispatch(actions.isLoading(true));
-    const projectBody = { name: project.name };
-    const projectId = await postNew('projects', projectBody);
-    cleanPalettes(project.palettes, projectId.id);
+    const { name, palettes } = project;
+    let projectId;
+    if (!project.id) {
+      const projectBody = { name };
+      const newProject = await postNew('projects', projectBody);
+      projectId = newProject.id;
+    } else {
+      projectId = project.id;
+    }
     const featured = {
-      name: project.name,
-      id: !project.id ? projectId.id : project.id,
-      palettes: project.palettes
+      name,
+      id: projectId,
+      palettes
     };
     dispatch(getProjects());
     dispatch(actions.setCurrentProject(featured));
