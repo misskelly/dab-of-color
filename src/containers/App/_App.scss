@@ -5,14 +5,16 @@
   display: grid;
   grid-template-areas:
     'header header header header'
-    'palettes unicorn unicorn new'
-    'form form form form'
+    'unicorn unicorn unicorn new'
+    'unicorn unicorn unicorn new'
+    'palettes form form form'
     'gallery gallery gallery gallery';
 }
 
 .header {
   grid-area: header;
   text-align: center;
+  height: 12rem;
 }
 
 .featured-palettes {
@@ -26,6 +28,7 @@
 
 .main-heading {
   font-family: $main-heading;
+  letter-spacing: 10px;
 }
 
 .generator-section {

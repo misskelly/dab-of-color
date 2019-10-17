@@ -24,12 +24,14 @@ export class Unicorn extends Component {
 
     return (
       <section className="featured-uni-section">
-        {size === 'large-uni' && featuredProject.name && (
-          <h3 className="hello-text">
-            Hello, my name is
-            <div className="uni-name-text">{featuredProject.name}</div>
-          </h3>
-        )}
+        <div className="hello-txt-wrapper">
+          {size === 'large-uni' && featuredProject.name && (
+            <h3 className="hello-text">
+              Hello, my name is
+              <div className="uni-name-text">{featuredProject.name}</div>
+            </h3>
+          )}
+        </div>
         <div className={`unicorn-wrapper ${size}`}>
           <svg
             id="Layer_1"

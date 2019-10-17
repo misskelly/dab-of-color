@@ -92,21 +92,19 @@ export class UniForm extends Component {
       <section className="form-section">
         {!editView && (
           <form className="new-uni-form" onSubmit={this.handleSaveName}>
-            <fieldset className="name-form">
-              <label className="name-input-label" htmlFor="name-input">
-                Name this unicorn:
-                <input
-                  type="text"
-                  value={unicornName}
-                  className="name-input"
-                  placeholder="Bob"
-                  onChange={e => this.handleChange(e, 'unicornName')}
-                />
-              </label>
-              <button className="name-uni-btn" type="submit">
-                Save
-              </button>
-            </fieldset>
+            <label className="name-input-label" htmlFor="name-input">
+              Hello, my name is
+              <input
+                type="text"
+                value={unicornName}
+                className="name-input"
+                placeholder=""
+                onChange={e => this.handleChange(e, 'unicornName')}
+              />
+            </label>
+            <button className="name-uni-btn" type="submit">
+              Save
+            </button>
           </form>
         )}
         {editView && (
@@ -120,7 +118,6 @@ export class UniForm extends Component {
                 type="text"
                 value={paletteName}
                 className="palette-name-input"
-                placeholder="Cotton Candy"
                 onChange={e => this.handleChange(e, 'paletteName')}
               />
             </label>
@@ -132,7 +129,7 @@ export class UniForm extends Component {
               type="button"
               onClick={this.formReset}
             >
-              Create New Unicorn
+              + Create New Unicorn
             </button>
           </form>
         )}
