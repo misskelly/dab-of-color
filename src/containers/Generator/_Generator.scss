@@ -5,9 +5,10 @@
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  height: 260px;
+  // height: 260px;
 }
 
 .generator-btn {
   @include oval-btn;
+  margin: 2rem;
 }

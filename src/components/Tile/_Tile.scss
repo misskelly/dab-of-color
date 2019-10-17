@@ -1,9 +1,12 @@
 .tile {
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  height: 15%;
+  width: 80%;
+  border: none;
+  padding: 3rem;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1rem;
 }
