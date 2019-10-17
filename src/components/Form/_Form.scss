@@ -8,14 +8,14 @@
   position: absolute;
   margin: 0 0 0 5rem;
   z-index: 10;
-  bottom: 16rem;
-  left: -30rem;
+  bottom: 20rem;
+  left: -15rem;
 }
 
 .name-input {
   display: block;
   border: none;
-  font-size: 5rem;
+  font-size: 7vw;
   font-weight: bold;
   width: 30%;
   border-bottom: $input-border;
@@ -63,4 +63,5 @@
   display: block;
   padding: 0.5rem 1rem;
   margin: 5rem 2rem 5rem 8rem;
+  background: hsl(0, 0%, 92%);
 }

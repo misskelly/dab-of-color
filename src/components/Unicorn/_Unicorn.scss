@@ -1,19 +1,27 @@
 .featured-uni-section {
   display: flex;
   position: relative;
+  // margin: 3rem 0 3rem 3rem;
 }
 
 .unicorn-wrapper {
   position: relative;
   z-index: 0;
-  // margin: 0 auto;
   width: 100%;
 }
 
 .large-uni {
+  height: 40rem;
   position: relative;
-  width: 60%;
-  z-index: 0;
+  margin: 3rem 0 0 40%;
+  min-width: 450px;
+  max-width: 750px;
+}
+
+.large-uni-svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .new-unicorn-btn {

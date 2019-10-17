@@ -90,23 +90,23 @@ export class UniForm extends Component {
     const { unicornName, paletteName, editView } = this.state;
     return (
       <section className="form-section">
-        {!editView && (
-          <form className="new-uni-form" onSubmit={this.handleSaveName}>
-            <label className="name-input-label" htmlFor="name-input">
-              Hello, my name is
-              <input
-                type="text"
-                value={unicornName}
-                className="name-input"
-                placeholder=""
-                onChange={e => this.handleChange(e, 'unicornName')}
-              />
-            </label>
+        <form className="new-uni-form" onSubmit={this.handleSaveName}>
+          <label className="name-input-label" htmlFor="name-input">
+            Hello, my name is
+            <input
+              type="text"
+              value={unicornName}
+              className="name-input"
+              placeholder=""
+              onChange={e => this.handleChange(e, 'unicornName')}
+            />
+          </label>
+          {!editView && (
             <button className="name-uni-btn" type="submit">
               Save
             </button>
-          </form>
-        )}
+          )}
+        </form>
         {editView && (
           <form className="save-project-form" onSubmit={this.handleSubmit}>
             <label
@@ -115,6 +115,7 @@ export class UniForm extends Component {
             >
               Name this color scheme:
               <input
+                autoFocus
                 type="text"
                 value={paletteName}
                 className="palette-name-input"
