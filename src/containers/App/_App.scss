@@ -17,10 +17,10 @@
 
 .featured-palettes {
   grid-area: palettes;
-  min-width: 30%;
+  min-width: 20vw;
 }
 
-.unicorn-wrapper {
+.featured-uni-section {
   grid-area: unicorn;
 }
 
@@ -28,17 +28,17 @@
   font-family: $main-heading;
 }
 
-.new-palette-section {
+.generator-section {
   grid-area: new;
 }
 
-.new-uni-form {
+.form-section {
   grid-area: form;
 }
 
 .project-gallery {
   grid-area: gallery;
-  width: 100%;
+  width: 95%;
 }
 
 .new-palette-section {
@@ -50,4 +50,8 @@
   height: 100%;
   text-align: center;
   width: 100%;
+}
+
+.greeting-text {
+  grid-area: hello;
 }

@@ -38,7 +38,7 @@ export class App extends Component {
             <h1 className="main-heading">DAB OF COLORS</h1>
           </a>
         </header>
-        <MainUni />
+        <MainUni small={false} />
         <FeaturedPalettes />
         <PaletteGenerator />
         <NewUniForm />
