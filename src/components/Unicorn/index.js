@@ -6,7 +6,7 @@ export class Unicorn extends Component {
   render() {
     let size;
     let palette;
-    const { small, currentColors, colors, featuredProject } = this.props;
+    const { small, currentColors, colors } = this.props;
     if (!small) {
       palette = currentColors;
       size = 'large-uni';
