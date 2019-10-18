@@ -1,9 +1,48 @@
+.featured-uni-section {
+  display: flex;
+  position: relative;
+  // margin: 3rem 0 3rem 3rem;
+}
+
 .unicorn-wrapper {
-  margin: 0 auto;
+  position: relative;
+  z-index: 0;
   width: 100%;
+}
+
+.large-uni {
+  height: 40rem;
+  position: relative;
+  margin: 3rem 0 0 40%;
+  min-width: 450px;
+  max-width: 750px;
+}
+
+.large-uni-svg {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 
 .new-unicorn-btn {
   font-size: 2rem;
   align-self: center;
+}
+
+.hello-txt-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 40%;
+  display: flex;
+}
+.hello-text {
+  z-index: 10;
+  line-height: 1;
+  margin: 10rem auto;
+}
+.uni-name-text {
+  font-size: 6rem;
+  font-weight: bold;
+  padding: 0 0 0 3rem;
+  font-family: $name-heading;
 }

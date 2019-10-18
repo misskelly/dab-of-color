@@ -1,13 +1,16 @@
 .generator-section {
+  position: relative;
+  z-index: 0;
   text-align: center;
+  width: 80%;
 }
 .tile-container {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  height: 260px;
 }
 
 .generator-btn {
   @include oval-btn;
+  margin: 2rem;
 }

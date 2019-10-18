@@ -15,21 +15,6 @@ export class App extends Component {
     getProjects();
   }
 
-  // featuredPallets() {
-  //   const { currentPalettes } = this.state;
-  //   const palettes = currentPalettes.map(pal => {
-  //     const { name, color_1, color_2, color_3, color_4, color_5 } = pal;
-  //     return (
-  //       <Palette
-  //         name={name}
-  //         colors={[color_1, color_2, color_3, color_4, color_5]}
-  //       />
-  //     );
-  //   });
-
-  //   return palettes;
-  // }
-
   render() {
     return (
       <main className="app">
@@ -38,7 +23,7 @@ export class App extends Component {
             <h1 className="main-heading">DAB OF COLORS</h1>
           </a>
         </header>
-        <MainUni />
+        <MainUni small={false} />
         <FeaturedPalettes />
         <PaletteGenerator />
         <NewUniForm />
@@ -50,7 +35,6 @@ export class App extends Component {
 
 export const mapDispatchToProps = dispatch => ({
   getProjects: () => dispatch(getProjects())
-  // currentProject: project => dispatch(currentProject(project))
 });
 
 export default connect(

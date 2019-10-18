@@ -5,7 +5,14 @@
   grid-gap: 0.5rem;
 }
 
+.project-card {
+  border: 1px solid black;
+  border-radius: 10px;
+  background: hsl(0, 0%, 95%);
+}
 .card-heading {
   font-family: $name-heading;
   text-align: center;
+  margin: 0;
+  font-size: 2rem;
 }

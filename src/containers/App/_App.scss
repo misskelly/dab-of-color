@@ -1,53 +1,56 @@
 // unicorn wrapper
-
+* {
+  box-sizing: border-box;
+}
 .app {
   height: 100%;
   display: grid;
   grid-template-areas:
-    'header header header header'
-    'palettes unicorn unicorn new'
-    'form form form form'
-    'gallery gallery gallery gallery';
+    'header header header'
+    'unicorn unicorn new'
+    'unicorn  unicorn new'
+    'palettes form form'
+    'gallery gallery gallery';
+  grid-template-columns: 20% 60% 20%;
+  background: rgb(232, 232, 232);
 }
 
 .header {
   grid-area: header;
   text-align: center;
+  // height: 12rem;
+  margin: 0 0 5rem 0;
+  background: hsl(0, 0%, 95%);
 }
 
 .featured-palettes {
   grid-area: palettes;
-  min-width: 30%;
+  min-width: 20vw;
 }
 
-.unicorn-wrapper {
+.featured-uni-section {
   grid-area: unicorn;
+  // width: 80vw;
 }
 
 .main-heading {
   font-family: $main-heading;
+  letter-spacing: 10px;
 }
 
-.new-palette-section {
+.generator-section {
   grid-area: new;
 }
 
-.new-uni-form {
+.form-section {
   grid-area: form;
 }
 
 .project-gallery {
   grid-area: gallery;
-  width: 100%;
+  width: 95%;
 }
 
-.new-palette-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin: auto;
-  height: 100%;
-  text-align: center;
-  width: 100%;
+.greeting-text {
+  grid-area: hello;
 }

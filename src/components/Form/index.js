@@ -90,25 +90,23 @@ export class UniForm extends Component {
     const { unicornName, paletteName, editView } = this.state;
     return (
       <section className="form-section">
-        {!editView && (
-          <form className="new-uni-form" onSubmit={this.handleSaveName}>
-            <fieldset className="name-form">
-              <label className="name-input-label" htmlFor="name-input">
-                Name this unicorn:
-                <input
-                  type="text"
-                  value={unicornName}
-                  className="name-input"
-                  placeholder="Bob"
-                  onChange={e => this.handleChange(e, 'unicornName')}
-                />
-              </label>
-              <button className="name-uni-btn" type="submit">
-                Save
-              </button>
-            </fieldset>
-          </form>
-        )}
+        <form className="new-uni-form" onSubmit={this.handleSaveName}>
+          <label className="name-input-label" htmlFor="name-input">
+            Hello, my name is
+            <input
+              type="text"
+              value={unicornName}
+              className="name-input"
+              placeholder=""
+              onChange={e => this.handleChange(e, 'unicornName')}
+            />
+          </label>
+          {!editView && (
+            <button className="name-uni-btn" type="submit">
+              Save
+            </button>
+          )}
+        </form>
         {editView && (
           <form className="save-project-form" onSubmit={this.handleSubmit}>
             <label
@@ -117,10 +115,10 @@ export class UniForm extends Component {
             >
               Name this color scheme:
               <input
+                autoFocus
                 type="text"
                 value={paletteName}
                 className="palette-name-input"
-                placeholder="Cotton Candy"
                 onChange={e => this.handleChange(e, 'paletteName')}
               />
             </label>
@@ -132,7 +130,7 @@ export class UniForm extends Component {
               type="button"
               onClick={this.formReset}
             >
-              Create New Unicorn
+              + Create New Unicorn
             </button>
           </form>
         )}
